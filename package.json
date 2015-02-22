@@ -2,8 +2,8 @@
   "name": "coffee-porter",
   "main": "./lib/coffee-porter",
   "version": "0.0.0",
-  "description": "A short description of your package",
-  "repository": "https://github.com/atom/coffee-porter",
+  "description": "A quick coffeescript converter",
+  "repository": "https://github.com/LucasKA/coffee-porter",
   "license": "MIT",
   "engines": {
     "atom": ">=0.174.0 <2.0.0"

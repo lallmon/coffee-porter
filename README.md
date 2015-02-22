@@ -1,6 +1,8 @@
 # CoffeePorter
 
-All the CoffeeScript converters on Atom.io were either deprecated or janktastic, while this is very much a first version, it will convert your JS to CS using the ever awesome js2coffee.
+All the CoffeeScript converters on Atom.io were either deprecated or nonexistent.
+
+While this is very much a first version, it will convert your JS to CS using the ever awesome js2coffee.
 
 Pull requests gladly accepted.
 
