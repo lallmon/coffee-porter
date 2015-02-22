@@ -1,0 +1,22 @@
+# See https://atom.io/docs/latest/creating-a-package#menus for more details
+'context-menu':
+  'atom-text-editor': [
+    {
+      'label': 'Toggle coffee-porter'
+      'command': 'coffee-porter:convert'
+    }
+  ]
+'menu': [
+  {
+    'label': 'Packages'
+    'submenu': [
+      'label': 'coffee-porter'
+      'submenu': [
+        {
+          'label': 'Convert'
+          'command': 'coffee-porter:convert'
+        }
+      ]
+    ]
+  }
+]
