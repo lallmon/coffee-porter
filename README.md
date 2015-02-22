@@ -1,5 +1,12 @@
-# coffee-porter package
+# CoffeePorter
 
-A short description of your package.
+All the CoffeeScript converters on Atom.io were either deprecated or janktastic, while this is very much a first version, it will convert your JS to CS using the ever awesome js2coffee.
 
-![A screenshot of your package](https://f.cloud.github.com/assets/69169/2290250/c35d867a-a017-11e3-86be-cd7c5bf3ff9b.gif)
+Pull requests gladly accepted.
+
+TODO
+
+- Write specs
+- Add error handling message window
+- Add ability to convert full on files
+- maybe reverse convert, who knows?

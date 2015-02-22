@@ -2,7 +2,7 @@
 'context-menu':
   'atom-text-editor': [
     {
-      'label': 'Toggle coffee-porter'
+      'label': 'Convert to CoffeeScript'
       'command': 'coffee-porter:convert'
     }
   ]
@@ -10,10 +10,10 @@
   {
     'label': 'Packages'
     'submenu': [
-      'label': 'coffee-porter'
+      'label': 'Coffee Porter'
       'submenu': [
         {
-          'label': 'Convert'
+          'label': 'Convert to CoffeeScript'
           'command': 'coffee-porter:convert'
         }
       ]

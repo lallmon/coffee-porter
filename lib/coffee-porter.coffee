@@ -8,7 +8,6 @@ module.exports =
       selection = editor.getSelectedText()
       try
         result = js2coffee.build(selection)
+        editor.insertText(result.code)
       catch e
-        console.error("invalid javascript")
-
-      editor.insertText(result.code)
+        console.error "Cannot complete conversion because" + e.description
