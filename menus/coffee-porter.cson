@@ -1,9 +1,12 @@
-# See https://atom.io/docs/latest/creating-a-package#menus for more details
 'context-menu':
   'atom-text-editor': [
     {
-      'label': 'Convert to CoffeeScript'
-      'command': 'coffee-porter:convert'
+      'label': 'Selected Text to CoffeeScript'
+      'command': 'coffee-porter:convertTextCoffeescript'
+    },
+    {
+      'label': 'Paste Clipboard as Coffeescript'
+      'command': 'coffee-porter:pasteAsCoffeescript'
     }
   ]
 'menu': [
@@ -13,8 +16,16 @@
       'label': 'Coffee Porter'
       'submenu': [
         {
-          'label': 'Convert to CoffeeScript'
-          'command': 'coffee-porter:convert'
+          'label': 'Selected Text to CoffeeScript'
+          'command': 'coffee-porter:convertTextCoffeescript'
+        },
+        {
+          'label': 'Selected File to CoffeeScript'
+          'command': 'coffee-porter:convertFileCoffeescript'
+        },
+        {
+          'label': 'Paste Clipboard as Coffeescript'
+          'command': 'coffee-porter:pasteAsCoffeescript'
         }
       ]
     ]
