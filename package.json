@@ -2,7 +2,7 @@
   "name": "coffee-porter",
   "main": "./lib/coffee-porter",
   "version": "0.8.0",
-  "description": "A quick coffeescript converter",
+  "description": "Convert your JS to Coffescript quickly and flexibly.",
   "repository": "https://github.com/LucasKA/coffee-porter",
   "license": "MIT",
   "engines": {
