@@ -1,18 +1,39 @@
-js2coffee = require 'js2coffee'
-path      = require 'path'
-fs        = require 'fs'
+CoffeeporterView      = require './coffee-porter-view'
+{CompositeDisposable} = require 'atom'
+
+js2coffee   = require 'js2coffee'
+path        = require 'path'
+fs          = require 'fs'
 
 module.exports = CoffeePorter =
-  activate: ->
-    atom.commands.add 'atom-workspace',
+  wordcountView: null
+  modalPanel: null
+  subscriptions: null
+
+  activate: (state) ->
+    @coffeeporterView = new CoffeeporterView(state.coffeeporterViewState)
+    @bottomPanel = atom.workspace.addBottomPanel (
+      item: @coffeeporterView.getElement(),
+      visible: false
+    )
+    @subscriptions = new CompositeDisposable
+    @subscriptions.add atom.commands.add 'atom-workspace',
       "coffee-porter:convertTextCoffeescript", =>
         @convertTextCoffee()
-    atom.commands.add 'atom-workspace',
+    @subscriptions.add atom.commands.add 'atom-workspace',
       "coffee-porter:convertFileCoffeescript", =>
         @convertFileCoffee()
-    atom.commands.add 'atom-workspace',
+    @subscriptions.add atom.commands.add 'atom-workspace',
       "coffee-porter:pasteAsCoffeescript", =>
         @pasteAsCoffeescript()
+
+  deactivate: ->
+    @bottomPanel.destroy()
+    @subscriptions.dispose()
+    @wordcountView.destroy()
+
+  serialize: ->
+    coffeeporterViewState: @coffeeporterView.serialize()
 
   convertTextCoffee: ->
     currentEditor = atom.workspace.getActiveTextEditor()
@@ -20,8 +41,14 @@ module.exports = CoffeePorter =
     try
       result = js2coffee.build(selection)
       currentEditor.insertText(result.code)
+      @coffeeporterView.displayMessage 'Successfully converted to coffeescript!'
+      @bottomPanel.show()
+      setTimeout (->
+        @bottomPanel.destroy()
+      ), 1000
     catch e
-      alert "Cannot complete conversion because " + e.description
+      @coffeeporterView.displayMessage('Cannot complete conversion: ' + e.description)
+      @bottomPanel.show()
 
   convertFileCoffee: ->
     try
@@ -52,6 +79,10 @@ module.exports = CoffeePorter =
   pasteAsCoffeescript: ->
     currentEditor = atom.workspace.getActiveTextEditor()
     clipboardText = atom.clipboard.read()
+    try
+      esprima.esvalidate(clipboardText)
+    catch
+
     try
       result = js2coffee.build(clipboardText)
       currentEditor.insertText(result.code)
