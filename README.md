@@ -1,3 +1,7 @@
+# Deprecated
+
+No longer maintaning or updating.
+
 # CoffeePorter
 
 All the CoffeeScript converters on Atom.io were either deprecated, non-existant, or singular features
